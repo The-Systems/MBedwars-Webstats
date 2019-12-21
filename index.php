@@ -111,7 +111,7 @@ if(!$con) {
             <div class="6u 12u$(medium)">
                 <section class="box">
                     <h3>Bedwars Stats</h3>
-                    <h4>Version: <?php echo $version;?> von Niekold</h4>
+                    <h4>Version: <?php echo $version;?> von TheSystems</h4>
 
                     <?php
 
@@ -142,9 +142,33 @@ if(!$con) {
                     }
 
                     ?>
+                    <?php
+                    $curl = curl_init();
+                    curl_setopt_array($curl, array(
+                        CURLOPT_URL => "https://project.the-systems.eu/api/resource/?resourceid=2&type=info",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_ENCODING => "",
+                        CURLOPT_MAXREDIRS => 10,
+                        CURLOPT_TIMEOUT => 2,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    ));
+
+                    $response = curl_exec($curl);
+                    $err = curl_error($curl);
+                    curl_close($curl);
+
+                    if ($err) {
+                        ?><h4>Ein Fehler beim Versions-Überprüfen ist aufgetreten.</h4><?php
+                    } else {
+                        $response = json_decode($response);
+                        $support = $response->support;
+                        $url = $response->url;
+
+                    }
+                    ?>
                     <p></p>
-                    <p><a href="https://discord.gg/CYHuDpx" class="button">Support Discord</a></p>
-                    <p><a href="https://www.spigotmc.org/resources/mbedwars-webstats.63445/" class="button">Spigot Seite</a></p>
+                    <p><a href="<?php echo $support; ?>" class="button">Support Discord</a></p>
+                    <p><a href="<?php echo $url; ?>" class="button">Webseite</a></p>
 
                 </section>
             </div>
