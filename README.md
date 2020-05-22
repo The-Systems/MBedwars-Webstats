@@ -5,7 +5,7 @@
 
 #### Info
 
-Webstats for Marcely Bedwars (https://www.spigotmc.org/resources/marcelys-bedwars-%E2%96%BA-4-0-%E2%96%BA-supports-1-7-1-15.13622/)
+Webstats for Marcely Bedwars (https://www.spigotmc.org/resources/13622/)
 
 #### Projectpage
 
